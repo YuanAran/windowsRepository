@@ -24,7 +24,6 @@ public class Main {
             }
             return;
         }
-//软件2202 0304220201 陈炬鹏
         Article currentArticle = list.get(currentIndex);
 
         // 计算上界（UB）
