@@ -22,7 +22,6 @@
         <div class="music-info">
           <h3>{{ music.title }}</h3>
           <p>{{ music.artist }}</p>
-          <p class="duration">{{ music.duration }}</p>
         </div>
         <div class="play-icon">
           <span v-if="currentPlaying === music.id">▶</span>
@@ -70,29 +69,76 @@ function searchMusic() {
   // 搜索逻辑已通过computed属性实现
 }
 
-function playMusic(music) {
-  currentPlaying.value = music.id;
-  currentAudio.value = `http://localhost:8080/api/music/${music.id}`;
-  nextTick(() => {
-    const audioElement = document.querySelector('audio');
-    
-    // 检查支持的音频格式
-    const supportedFormats = {
-      'mp3': 'audio/mpeg',
-      'ogg': 'audio/ogg',
-      'wav': 'audio/wav'
-    };
-    
-    // 获取文件扩展名
-    const format = music.fileFormat || 'mp3';
-    
-    if (audioElement.canPlayType(supportedFormats[format])) {
+async function playMusic(music) {
+  console.log('正在播放的音乐数据:', music);
+
+  // 将 Proxy 对象转为普通对象，以便更容易访问属性
+  const musicData = JSON.parse(JSON.stringify(music));
+
+  console.log('musicData.url:', musicData.url);  // 打印 url 属性查看是否有效
+
+  if (!musicData.url) {
+    // 如果没有 URL，向后端请求资源
+    try {
+      const response = await fetch(`http://localhost:8080/api/music/${musicData.id}`);
+      const data = await response.json();
+      if (data.url) {
+        musicData.url = data.url;  // 更新 musicData 中的 URL
+        console.log('获取到的音频文件 URL:', musicData.url);
+      } else {
+        console.error('未能获取音频文件 URL');
+        return;
+      }
+    } catch (error) {
+      console.error('请求音频文件失败:', error);
+      return;
+    }
+  }
+
+  if (!musicData.url) {
+    console.error('音频文件 URL 未找到');
+    return;
+  }
+
+  console.log('准备播放的音频 URL:', musicData.url);
+
+  const audioElement = document.querySelector('audio');
+  if (!audioElement) {
+    console.error('未找到音频元素');
+    return;
+  }
+
+  // 如果点击的是当前正在播放的音乐，则切换播放/暂停状态
+  if (currentPlaying.value === musicData.id) {
+    if (audioElement.paused) {
       audioElement.play().catch(error => {
         console.error('播放失败:', error);
       });
     } else {
-      console.error(`浏览器不支持${format}音频格式`);
+      audioElement.pause();
+      currentPlaying.value = null;
     }
+    return;
+  }
+
+  currentPlaying.value = musicData.id;
+  
+  // 确保URL格式正确
+  let audioUrl = musicData.url;
+  if (!audioUrl.startsWith('http')) {
+    audioUrl = `http://localhost:3000/${encodeURIComponent(musicData.title + '-' + musicData.artist + '.mp3')}`;
+  }
+  
+  currentAudio.value = audioUrl;
+  const format = musicData.format || 'mp3';
+
+  // 设置音频源并播放
+  audioElement.src = currentAudio.value;
+  audioElement.type = supportedFormats[format];
+  audioElement.load();
+  
+  audioElement.play().catch(error => {
+    console.error('播放失败:', error);
   });
 }
 
@@ -100,6 +146,10 @@ function onAudioEnd() {
   currentPlaying.value = null;
 }
 </script>
+
+
+
+
 
 <style scoped>
 .music-container {
@@ -178,7 +228,7 @@ function onAudioEnd() {
 
 .play-icon {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: #4a2d96;
 }
 
 @media (max-width: 768px) {

@@ -54,6 +54,9 @@ const handleSubmit = async () => {
     }
 
     const data = await response.json();
+    if (!data.token) {
+      throw new Error('登录失败，请检查用户名和密码');
+    }
     localStorage.setItem('token', data.token);
     router.push('/dashboard');
   } catch (error) {

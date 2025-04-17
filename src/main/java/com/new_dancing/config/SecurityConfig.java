@@ -17,9 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors().and()
-            .authorizeRequests()
-            .antMatchers("/api/**").permitAll()  // 确保 API 端点不受权限限制
-            .anyRequest().authenticated();  // 其他请求需要认证
+                .authorizeRequests()
+                .antMatchers("/api/**", "/music/**").permitAll()  // 确保 API 和 music 路径不受权限限制
+                .anyRequest().authenticated();  // 其他请求需要认证
     }
 
     // 使用 CorsConfigurationSource 来配置 CORS 策略
@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);  // 允许发送凭证
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", configuration);  // 对 API 路径应用 CORS 配置
+        source.registerCorsConfiguration("/music/**", configuration);  // 对 music 路径应用 CORS 配置
         return source;
     }
 }
