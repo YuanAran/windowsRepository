@@ -39,7 +39,7 @@
   padding: var(--spacing-unit);
   text-align: center;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -55,10 +55,11 @@
 }
 
 h1 {
-  color: white;
+  color: #2c3e50;
   margin-bottom: 1rem;
   font-size: 2.5rem;
   transition: color 0.3s;
+  font-weight: 600;
 }
 
 .subtitle {
@@ -87,13 +88,14 @@ h1 {
 }
 
 .card h3 {
-  color: var(--primary-color);
+  color: #2c3e50;
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .card p {
-  color: var(--text-color);
-  opacity: 0.8;
+  color: #2c3e50;
+  opacity: 0.9;
 }
 
 nav a {

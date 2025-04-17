@@ -144,6 +144,7 @@ input {
   border-radius: 12px;
   font-size: 1rem;
   font-weight: bold;
+  color: #1a365d;
   transition: all 0.3s;
   background: rgba(255, 255, 255, 0.8);
   transition: all 0.3s;
