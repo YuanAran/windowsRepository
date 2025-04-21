@@ -26,101 +26,106 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useRouter } from 'vue-router';
-</script>
-
 <style scoped>
 .welcome-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 300%;
-  margin: 0;
-  transform: translateX(-33.33%);
-  padding: 2rem 0;
-  background: rgba(255, 255, 255, 0.9);
-  box-sizing: border-box;
-}
-
-.welcome-container::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.welcome-container h1 {
-  color: #1a202c;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  font-family: 'Arial', sans-serif;
+  max-width: 1400px; /* 增加页面最大宽度 */
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-weight: 600;
 }
 
-.welcome-description {
-  color: #1a202c;
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  text-align: center;
+h1 {
+  font-size: 3.2em;
+  color: #333;
+  margin-bottom: 40px;
 }
 
 .feature-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 1rem;
+  grid-template-columns: repeat(2, 1fr); /* 每行显示两个功能项 */
+  gap: 40px; /* 增加模块之间的间距 */
+  margin-bottom: 40px;
 }
 
 .feature-item {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left; /* 使文本左对齐，便于阅读 */
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .feature-item h3 {
-  color: var(--primary-color);
-  margin-bottom: 0.8rem;
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .feature-item p {
-  color: #2d3748;
-  font-size: 1rem;
-  text-align: center;
+  font-size: 1.2em;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .welcome-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  margin-top: 50px;
 }
 
 .start-button {
-  background-color: var(--primary-color);
-  color: #1a202c;
-  padding: 1rem 2.5rem;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1.2rem;
+  display: inline-block;
+  padding: 18px 35px;
+  font-size: 1.3em;
+  background-color: #f9d74e;
+  color: white;
   text-decoration: none;
-  transition: all 0.3s;
-  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .start-button:hover {
-  background-color: var(--secondary-color);
+  background-color: #f7c130;
   transform: translateY(-2px);
 }
+
+.start-button:active {
+  background-color: #f7c130;
+  transform: translateY(1px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4em;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr; /* 小屏幕时单列显示 */
+    gap: 20px;
+  }
+
+  .feature-item {
+    padding: 20px;
+  }
+
+  .start-button {
+    padding: 14px 28px;
+    font-size: 1.1em;
+  }
+}
 </style>
+
+
+
+
