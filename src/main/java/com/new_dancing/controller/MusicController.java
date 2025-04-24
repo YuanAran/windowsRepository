@@ -23,11 +23,11 @@ import com.new_dancing.model.Music;
 @RestController
 @RequestMapping("/api/music")
 public class MusicController {
-    private final String MUSIC_DIR_PATH = "E:\\IdeaProjects\\new_dancing\\dancing_music"; // 音乐文件夹路径
+    private final String MUSIC_DIR_PATH = "E:\\study\\project\\mmy\\windowsRepository\\dancing_music"; // 音乐文件夹路径
     @GetMapping("/list")
     public ResponseEntity<List<Music>> getMusicList() {
         List<Music> musicList = new ArrayList<>();
-        File musicDir = new File("E:\\IdeaProjects\\new_dancing\\dancing_music");
+        File musicDir = new File("E:\\study\\project\\mmy\\windowsRepository\\dancing_music");
         File[] musicFiles = musicDir.listFiles((dir, name) -> name.endsWith(".mp3"));
 
         if (musicFiles != null) {

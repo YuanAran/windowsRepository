@@ -4,6 +4,7 @@ import Register from '../components/register.vue'
 import Welcome from '../components/Welcome.vue'
 import Music from '../components/Music.vue'
 import Dashboard from '../components/Dashboard.vue'
+import videos from "../components/videos.vue";
 
 const routes = [
   {
@@ -24,7 +25,11 @@ const routes = [
   },
   {
     path: '/dashboard',
-    component: Dashboard 
+    component: Dashboard
+  },
+  {
+    path: '/videos',
+    component: videos
   }
 ]
 
