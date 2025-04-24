@@ -34,9 +34,13 @@ const username = ref('');
 const password = ref('');
 const router = useRouter();
 const sessionId = uuidv4();
+const API_BASE_URL = 'http://localhost:8080/api';
+const API_VPN_URL='http://1067150ru78fm.vicp.fun/api'
+const API_NEW_URL='http://10.12.51.22:5555/api'
+const API_NEW1_URL='https://10.12.51.22:5555/api'
 const handleSubmit = async () => {
   try {
-    const response = await fetch('http://localhost:8080/api/auth/login', {
+    const response = await fetch(`${API_NEW1_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

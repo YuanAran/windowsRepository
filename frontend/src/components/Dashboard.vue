@@ -49,11 +49,10 @@
     </div>
     
     <div class="feature-cards">
-      <div class="card" @click="$router.push('/videos')">
+       <div class="card" @click="$router.push('/videos')">
         <h3>学习视频</h3>
         <p>专业广场舞教学视频</p>
       </div>
-      
       <div class="card" @click="$router.push('/music')">
         <h3>音乐库</h3>
         <p>精选广场舞音乐</p>
@@ -64,7 +63,7 @@
         <p>与舞友交流分享</p>
       </div>
       
-      <div class="card" @click="$router.push('/invite')">
+      <div class="card" @click="$router.push('/video')">
         <h3>邀请好友</h3>
         <p>一起学习广场舞</p>
       </div>

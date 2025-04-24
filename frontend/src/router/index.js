@@ -6,12 +6,17 @@ import Music from '../components/Music.vue'
 import Dashboard from '../components/Dashboard.vue'
 import videos from "../components/videos.vue"
 import Profile from '../components/Profile.vue'
+import VideoCon from "../components/VideoCon.vue";
 
 const routes = [
   {
     path: '/',
     component: Welcome
   },
+    {
+      path: '/video',
+      component: VideoCon
+    },
   {
     path: '/login',
     component: Login

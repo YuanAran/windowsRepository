@@ -1,10 +1,14 @@
 
+
 const API_BASE_URL = 'http://localhost:8080/api/friends';
+const API_VPN_URL='http://1067150ru78fm.vicp.fun/api/friends'
+const API_NEW_URL='http://10.12.51.22:5555/api/friends'
+const API_NEW1_URL='https://10.12.51.22:5555/api/friends'
 
 const FriendService = {
   async getFriends() {
     try {
-      const response = await fetch(`${API_BASE_URL}/list`, {
+      const response = await fetch(`${API_NEW1_URL}/list`, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +27,7 @@ const FriendService = {
   
   async getFriendRequests() {
     try {
-      const response = await fetch(`${API_BASE_URL}/requests`, {
+      const response = await fetch(`${API_NEW1_URL}/requests`, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +45,7 @@ const FriendService = {
   
   async searchUsers(userId) {
     try {
-      const response = await fetch(`${API_BASE_URL}/search?id=${userId}`, {
+      const response = await fetch(`${API_NEW1_URL}/search?id=${userId}`, {
         credentials: 'include'
       });
       console.log('搜索响应状态:', response.status);
@@ -57,7 +61,7 @@ const FriendService = {
   
   async sendFriendRequest(friendId) {
     try {
-      const response = await fetch(`${API_BASE_URL}/request/${friendId}`, {
+      const response = await fetch(`${API_NEW1_URL}/request/${friendId}`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -76,7 +80,7 @@ const FriendService = {
   
   async acceptFriendRequest(requestId) {
     try {
-      const response = await fetch(`${API_BASE_URL}/accept/${requestId}`, {
+      const response = await fetch(`${API_NEW1_URL}/accept/${requestId}`, {
         method: 'POST',
         credentials: 'include',
         headers: {

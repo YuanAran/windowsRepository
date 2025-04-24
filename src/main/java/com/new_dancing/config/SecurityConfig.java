@@ -28,6 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("http://localhost:5173");// 前端地址
         configuration.addAllowedOrigin("http://10.12.51.22:5173");
+        configuration.addAllowedOrigin("http://10.12.51.22:5555");
+        configuration.addAllowedOrigin("https://10.12.51.22:5555");
+        configuration.addAllowedOrigin("http://1067150ru78fm.vicp.fun:32352");
+        configuration.addAllowedOrigin("https://6286-218-68-56-23.ngrok-free.app");
         configuration.addAllowedOrigin("http://10.12.51.22:8080");
         configuration.addAllowedOrigin("http://localhost:8080");  // 后端地址
         configuration.addAllowedMethod("*");  // 允许所有 HTTP 方法

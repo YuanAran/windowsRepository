@@ -13,8 +13,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")  // 允许对所有 API 请求配置跨域
-                        .allowedOrigins("http://localhost:5173") // 允许前端域名
+                        .allowedOrigins("http://localhost:5173","https://10.12.51.22:5555","http://10.12.51.22:5555") // 允许前端域名
                         .allowedOrigins("http://10.12.51.22:5173")
+                        .allowedOrigins("http://1067150ru78fm.vicp.fun:32352")
+                        .allowedOrigins("https://6286-218-68-56-23.ngrok-free.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 允许的 HTTP 方法
                         .allowedHeaders("*") // 允许的请求头
                         .allowCredentials(true) // 允许发送 cookie
@@ -22,8 +24,10 @@ public class CorsConfig {
 
                 // 为 /music/** 路径也添加跨域支持
                 registry.addMapping("/music/**")
-                        .allowedOrigins("http://localhost:5173")
+                        .allowedOrigins("http://localhost:5173","https://10.12.51.22:5555","http://10.12.51.22:5555")
                         .allowedOrigins("http://10.12.51.22:5173")// 允许前端域名
+                        .allowedOrigins("http://1067150ru78fm.vicp.fun:32352")
+                        .allowedOrigins("https://6286-218-68-56-23.ngrok-free.app")
                         .allowedMethods("GET") // 允许的 HTTP 方法，GET 方法用于音频文件请求
                         .allowedHeaders("*") // 允许的请求头
                         .allowCredentials(true) // 允许发送 cookie
