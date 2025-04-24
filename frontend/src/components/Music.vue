@@ -9,6 +9,7 @@
           v-model="searchQuery"
         />
         <button @click="searchMusic">搜索</button>
+        <button @click="goBack" class="back-button">返回</button>
       </div>
     </div>
     
@@ -145,99 +146,123 @@ async function playMusic(music) {
 function onAudioEnd() {
   currentPlaying.value = null;
 }
+
+function goBack() {
+  window.history.back();
+}
 </script>
-
-
-
 
 
 <style scoped>
 .music-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-unit);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.header h1 {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+h1 {
+  font-size: 2.5em;
+  color: #333;
 }
 
 .search-bar {
+  margin-top: 15px;
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .search-bar input {
-  flex: 1;
-  padding: 0.5rem 1rem;
+  width: 300px;
+  padding: 10px;
+  font-size: 1em;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
+  outline: none;
 }
 
 .search-bar button {
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  color: white;
+  padding: 10px 15px;
+  font-size: 1em;
+  margin-left: 10px;
+  background-color: #f9d74e;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #f7c130;
+}
+
+.back-button {
+  margin-left: 10px;
+  background-color: #f4f4f9;
+  border: 1px solid #ddd;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
 }
 
 .music-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .music-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .music-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.music-info {
+  flex: 1;
 }
 
 .music-info h3 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-size: 1.2em;
+  color: #333;
+  margin: 0;
 }
 
 .music-info p {
-  color: #2c3e50;
-  opacity: 0.9;
-  margin-bottom: 0.3rem;
+  font-size: 1em;
+  color: #777;
+  margin-top: 5px;
 }
 
 .play-icon {
-  font-size: 1.5rem;
-  color: #4a2d96;
+  font-size: 1.5em;
+  color: #f9d74e;
 }
 
-@media (max-width: 768px) {
-  .music-container {
-    padding: calc(var(--spacing-unit) * 0.5);
-  }
-  
-  .music-list {
-    grid-template-columns: 1fr;
-  }
+.play-icon span {
+  display: inline-block;
+  transform: scale(1.3);
 }
+
 </style>
+
+
+

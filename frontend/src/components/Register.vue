@@ -91,93 +91,79 @@ const handleSubmit = async () => {
 
 <style scoped>
 .register-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 200%;
+  font-family: 'Arial', sans-serif;
   max-width: 500px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.register-container::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.register-container h2 {
-  color: #2c3e50;
-  margin-bottom: 2rem;
-  font-size: 2.2rem;
+h2 {
   text-align: center;
-  font-weight: 600;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .form-group {
-  margin-bottom: 1.8rem;
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
+  margin-bottom: 20px;
 }
 
-label {
+.form-group label {
   display: block;
-  margin-bottom: 0.8rem;
-  color: #2c3e50;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-input {
-  width: 100%;
-  padding: 1.2rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 1rem;
   font-weight: bold;
-  color: #1a365d;
-  transition: all 0.3s;
-  background: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s;
-  background: rgba(255, 255, 255, 0.8);
+  color: #555;
+  margin-bottom: 5px;
 }
 
-input[type='password'] {
-  color: #2c3e50;
-  font-weight: 600;
-}  
-
-input:focus {
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(66, 185, 131, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #f9d74e;
 }
 
 button {
   width: 100%;
-  padding: 1.2rem;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-  color: #2c3e50;
+  padding: 12px;
+  font-size: 1.1em;
+  background-color: #f9d74e;
   border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1.1rem;
+  border-radius: 5px;
+  color: white;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(66, 185, 131, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(66, 185, 131, 0.4);
+  background-color: #f7c130;
+}
+
+.login-hint {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1em;
+  color: #777;
+}
+
+.login-hint a {
+  color: #f9d74e;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-hint a:hover {
+  color: #f7c130;
 }
 </style>
